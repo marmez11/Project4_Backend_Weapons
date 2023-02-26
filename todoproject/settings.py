@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='localkey2022')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 ## Handling Allowed Hosts on Render
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
@@ -91,6 +91,10 @@ DATABASES = {
         conn_health_checks=True,
     ),
 }
+
+DATABASES['default'] =  dj_database_url.config()
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
